@@ -22,7 +22,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .app-page {
 
   background: aliceblue;
