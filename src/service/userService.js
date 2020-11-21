@@ -6,7 +6,12 @@ function saveUser(user) {
   localStorage.setItem("currentUser", user)
 }
 
+function clearCurrentUser() {
+  localStorage.clear()
+}
+
 export default {
   saveUser,
-  currentUser
+  currentUser,
+  clearCurrentUser
 }

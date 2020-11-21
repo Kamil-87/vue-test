@@ -98,6 +98,9 @@ export default ({
     email: {email, required},
     password: {required, minLength: minLength(8)}
   },
+  created() {
+    userService.clearCurrentUser()
+  },
 
   methods: {
     authorize() {
