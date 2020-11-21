@@ -16,7 +16,7 @@
         :postData="post"
     >
       <article>
-        <a class="card" href="#">
+        <router-link class="card" :to="{ name: 'post', params:' id: {{post.id}}'}">
           <div class="card__img-left">
             <img :src=" require('../assets/images/' + post.image) "  alt="">
           </div>
@@ -28,7 +28,7 @@
             <p class="card__author"><em>{{post.author}}</em></p>
             <p class="card__date"><small class="text-muted">Creation  date</small></p>
           </div>
-        </a>
+        </router-link>
       </article>
 
     </div>

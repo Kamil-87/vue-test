@@ -33,8 +33,11 @@ export default {
   },
   computed: {
     postId() {
-      return +this.$route.params.id;
+      return this.$route.params.id;
     }
+  },
+  created() {
+    console.log("id: ", this.$route.params.id)
   }
 }
 </script>

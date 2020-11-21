@@ -8,7 +8,7 @@
 
 <script>
 import MainLayout from "@/layouts/MainLayout";
-import UnauthorizedLayout from "@/layouts/UnauthorizedLayout";
+import EmptyLayout from "@/layouts/EmptyLayout";
 export default {
   computed: {
     layout() {
@@ -17,7 +17,7 @@ export default {
   },
   components: {
     MainLayout,
-    UnauthorizedLayout
+    EmptyLayout
   }
 }
 </script>
