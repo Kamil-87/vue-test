@@ -11,6 +11,7 @@
 <script>
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import userService from "../service/userService";
 export default {
   name: "main-layout",
   components: {
@@ -22,8 +23,7 @@ export default {
   },
   methods: {
     checkUserAuthentication() {
-      const user = localStorage.getItem("currentUser")
-      if (!user) {
+      if (!userService.currentUser()) {
         this.$router.push('/auth')
       }
     }

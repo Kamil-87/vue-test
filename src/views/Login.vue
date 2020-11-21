@@ -80,6 +80,7 @@
 
 <script>
 import {email, required, minLength, maxLength} from 'vuelidate/lib/validators'
+import userService from "../service/userService";
 
 export default ({
   name: 'login',
@@ -105,13 +106,12 @@ export default ({
         this.$v.$touch()
         return
       }
-      const formData = {
+      const user = {
         email: this.email,
         password: this.password
       }
 
-      console.log(formData)
-      localStorage.setItem("currentUser", formData)
+      userService.saveUser(user)
       this.$router.push('/')
     }
   }
