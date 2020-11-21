@@ -16,10 +16,9 @@
         :postData="post"
     >
       <article>
-
+        <a class="card" href="#">
           <div class="card__img-left">
             <img :src=" require('../assets/images/' + post.image) "  alt="">
-            {{post.image}}
           </div>
           <div class="card__content">
             <h3 class="card__title">{{post.title}}</h3>
@@ -29,6 +28,7 @@
             <p class="card__author"><em>{{post.author}}</em></p>
             <p class="card__date"><small class="text-muted">Creation  date</small></p>
           </div>
+        </a>
       </article>
 
     </div>

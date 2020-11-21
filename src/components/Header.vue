@@ -8,12 +8,24 @@
           </a>
         </div>
         <div class="header__right">
+          <Navbar />
           <input type="text" class="header__search" placeholder="Найти статью">
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import Navbar from "@/components/Navbar";
+
+export default {
+  name: "header",
+  components: {
+    Navbar
+  }
+}
+</script>
 
 
 <style lang="scss">

@@ -34,12 +34,10 @@ export default {
 
 </script>
 
-<style scoped>
+<style>
   .menu {
     list-style-type: none;
-    margin-bottom: 10px;
     display: flex;
-    padding-top: 10px;
   }
 
   li {
@@ -59,9 +57,4 @@ export default {
     text-transform: uppercase;
   }
 
-  .container {
-    margin: 0 auto;
-    min-width: 900px;
-    padding: 0 30px;
-  }
 </style>
