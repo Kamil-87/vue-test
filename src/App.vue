@@ -9,6 +9,7 @@
 <script>
 import MainLayout from "@/layouts/MainLayout";
 import EmptyLayout from "@/layouts/EmptyLayout";
+import PopupLayout from "@/layouts/PopupLayout";
 export default {
   computed: {
     layout() {
@@ -17,7 +18,8 @@ export default {
   },
   components: {
     MainLayout,
-    EmptyLayout
+    EmptyLayout,
+    PopupLayout
   }
 }
 </script>

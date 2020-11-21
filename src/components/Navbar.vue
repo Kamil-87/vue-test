@@ -14,7 +14,6 @@
       </router-link>
 
     </ul>
-    <hr>
   </nav>
 </template>
 
@@ -28,11 +27,11 @@ export default {
         {title: "Авторизация", url: "/auth"},
         {title: "Профиль", url: "/profile"},
         {title: "Статья", url: "/post"},
-        {title: "Статья", url: "/post"},
       ]
     };
   }
 };
+
 </script>
 
 <style scoped>
@@ -62,7 +61,7 @@ export default {
 
   .container {
     margin: 0 auto;
-    min-width: 1200px;
+    min-width: 900px;
     padding: 0 30px;
   }
 </style>

@@ -20,12 +20,6 @@ export default new Router({
       meta: {layout: 'empty'},
       component: () => import("@/views/Login")
     },
-    // {
-    //   path: "/profile",
-    //   name: "profile",
-    //   meta: {layout: 'main'},
-    //   component: () => import("@/views/Profile")
-    // },
     {
       path: "/post/:id",
       name: "post",

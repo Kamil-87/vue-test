@@ -1,9 +1,9 @@
 <template>
-  <div class="app-main-layout">
+  <div class="main-layout">
 
     <Navbar />
 
-    <div class="app-page container">
+    <div class="app-page">
         <router-view />
     </div>
 
@@ -11,11 +11,13 @@
 </template>
 
 <script>
+import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 export default {
   name: "main-layout",
   components: {
+    Header,
     Navbar,
     Footer
   }

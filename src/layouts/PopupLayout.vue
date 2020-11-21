@@ -1,5 +1,5 @@
 <template>
-  <div class="popup_wrapper" ref="popup_wrapper">
+  <div class="popup-layout">
     <div class='v-popup'>
       <div class="v-popup__header">
         <span>{{popupTitle}}</span>
@@ -30,16 +30,6 @@
 <script>
 export default {
   name: "popup-layout",
-  props: {
-    popupTitle: {
-      type: String,
-      default: 'Popup name'
-    },
-    rightBtnTitle: {
-      type: String,
-      default: 'Ok'
-    }
-  },
   methods: {
     rightBtnAction() {
       this.$emit('rightBtnAction')
