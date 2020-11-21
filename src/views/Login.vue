@@ -2,7 +2,7 @@
   <div>
     <form
         class="auth-card"
-        @submit.prevent="checkForm"
+        @submit.prevent="authorize"
         action="/"
         method="post"
     >
@@ -99,7 +99,7 @@ export default ({
   },
 
   methods: {
-    checkForm() {
+    authorize() {
       if (this.$v.$invalid) {
         console.log($v.password)
         this.$v.$touch()
@@ -111,6 +111,7 @@ export default ({
       }
 
       console.log(formData)
+      localStorage.setItem("currentUser", formData)
       this.$router.push('/')
     }
   }
