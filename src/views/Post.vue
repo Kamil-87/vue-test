@@ -1,43 +1,32 @@
 <template>
-  <div>
+  <main class="main">
+    <div class="container">
+      <h2>Статьи {{ postId }} </h2>
+      <div
+          class="posts__item post"
 
-    <h2>Статьи {{ $route.params.id }} </h2>
-    <div
-        class="posts__item post"
+      >
 
-    >
-
-<!--      <h2 class="post__title">{{post.title}}</h2>-->
-      <div class="post__body">
-        <div class="post__img">
-          изображение
+<!--              <h2 class="post__title">{{post.title}}</h2>-->
+        <div class="post__body">
+          <div class="post__img">
+            изображение
+          </div>
+<!--                  <p class="post__text">{{post.description}}</p>-->
         </div>
-<!--        <p class="post__text">{{post.description}}</p>-->
-      </div>
 
+      </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
 
 export default {
-  name: "post",
-  props: {
-    postData: {
-      type: Object,
-      default() {
-        return {}
-      }
-    }
-  },
   computed: {
     postId() {
       return this.$route.params.id;
     }
-  },
-  created() {
-    console.log("id: ", this.$route.params.id)
   }
 }
 </script>
@@ -48,6 +37,7 @@ export default {
   width: 600px;
   margin: 0 auto;
 }
+
 .post__title {
   text-align: center;
   margin-bottom: 25px;

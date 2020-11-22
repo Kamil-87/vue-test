@@ -1,11 +1,51 @@
 @import "variable";
 
+html, body {
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   color: $main-color;
+  background-color: $main-background;
+  font-family: $main-fonts;
+  font-size: $main-font-size;
+}
+
+main {
+  flex: 1 0 auto;
+  padding-top: 25px;
+}
+footer{
+  flex: 0 0 auto;
 }
 
 .container {
   max-width: 900px;
   padding: 0 30px;
   margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(56,151,240);
+  color: #ffffff;
+  
+  &:hover {
+    background-color: rgba(56,151,240, .9);
+    outline: none;
+  }
 }

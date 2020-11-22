@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Post from '@/views/Post'
 
 Vue.use(Router)
 
@@ -12,7 +11,17 @@ export default new Router({
       path: '/',
       name: 'home',
       meta: {layout: 'main'},
-      component: () => import("@/views/Home")
+      component: () => import("@/views/Home"),
+    },
+    {
+      path: '/post/:id',
+      name: 'post',
+      meta: {layout: 'main'},
+      component: () => import("@/views/Post"),
+    },
+    {
+      path: '*/*',
+      redirect: { name: 'home' }
     },
     {
       path: "/auth",
@@ -21,15 +30,9 @@ export default new Router({
       component: () => import("@/views/Login")
     },
     {
-      path: "/post/:id",
-      name: "post",
-      meta: {layout: 'main'},
-      component: () => import("@/views/Post")
-    },
-    {
       path: "/profile",
       name: "profile",
-      meta: {layout: 'popup'},
+      meta: {layout: 'main'},
       component: () => import("@/views/Profile")
     },
   ]
