@@ -19,6 +19,7 @@
   </form>
 </template>
 
+
 <style>
 .form-box {
   padding: 0 20px;
@@ -29,14 +30,7 @@
 }
 
 input {
-  display: block;
-  width: 100%;
-  margin: 4px;
-  padding: 10px 15px;
-  border: 1px solid rgb(178, 178, 178);
-  border-radius: 3px;
-  box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.6) inset;
-  transition: all 0.2s linear;
+  margin: 0;
 }
 
 textarea {

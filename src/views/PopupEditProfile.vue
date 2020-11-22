@@ -1,6 +1,6 @@
 <template>
-  <transition name="fade popup-fade">
-    <div class="modal-backdrop" ref="popup-wrapper">
+  <transition name="popup-add-post">
+    <div class="modal-backdrop">
       <div class="modal"
            role="dialog"
            aria-labelledby="modalTitle"
@@ -11,7 +11,7 @@
             id="modalTitle"
         >
           <h4>
-            {{ popupTitle }}
+            Добавить статью
           </h4>
             <button
                 type="button"
@@ -38,20 +38,10 @@
 
 <script>
 export default {
-  props: {
-    popupTitle: {
-      type: String,
-      default: ''
-    },
-    namePopup: {
-      type: String,
-      default: ''
-    }
-  },
   methods: {
     close() {
       this.$emit('close');
-    }
+    },
   },
 };
 </script>

@@ -2,23 +2,25 @@
   <main class="main">
     <div class="container">
       <div class="main__top">
-        <button
-            class="btn"
-            @click="addPost"
-        >
-          Добавить статью
-        </button>
+<!--        <button-->
+<!--            class="btn"-->
+<!--            @click="addPost"-->
+<!--        >-->
+<!--          Добавить статью-->
+<!--        </button>-->
 
         <button
             class="btn"
-            @click="updateProfile"
-        >Редактировать профиль</button>
+            @click="EditProfile"
+        >
+          Редактировать профиль
+        </button>
       </div>
 
       <popup
-        v-if="isPopupVisible"
+        v-if="showPopup"
         @close="closePopup"
-
+        popupTitle="Редактировать профиль"
       >
         <template v-slot:body>
           <edit-profile />
@@ -50,7 +52,7 @@ import AddPost from "../components/AddPost";
 export default {
   data() {
     return {
-      isPopupVisible: false
+      showPopup: false
     }
   },
   components: {
@@ -59,14 +61,11 @@ export default {
     AddPost
   },
   methods: {
-    updateProfile() {
-      this.isPopupVisible = true;
-    },
-    addPost() {
-      this.isPopupVisible = true;
+    EditProfile() {
+      this.showPopup = true;
     },
     closePopup() {
-      this.isPopupVisible = false;
+      this.showPopup = false;
     }
   }
 }

@@ -12,7 +12,7 @@
 
     <div class="form-group">
       <label for="descriptionPost">
-        <textarea id="descriptionPost" placeholder="Описание статьи" />
+        <textarea id="descriptionPost" placeholder="Описание статьи"/>
       </label>
     </div>
 
@@ -26,20 +26,10 @@
       </label>
     </div>
 
-    <button class="btn" type="submit">Добавить</button>
+    <button class="btn" type="submit">Сохранить</button>
   </form>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      namePopup: 'add-post',
-      title: 'Добавить статью'
-    }
-  }
-}
-</script>
 
 <style>
 .form-box {

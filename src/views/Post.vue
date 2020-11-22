@@ -6,7 +6,6 @@
           class="posts__item post"
 
       >
-
 <!--              <h2 class="post__title">{{post.title}}</h2>-->
         <div class="post__body">
           <div class="post__img">
@@ -23,6 +22,20 @@
 <script>
 
 export default {
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    description: {
+      type: String,
+      default: ''
+    },
+    image: {
+      type: String,
+      default: ''
+    },
+  },
   computed: {
     postId() {
       return this.$route.params.id;
