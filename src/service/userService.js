@@ -38,16 +38,9 @@ function refreshState() {
   }
 }
 
-function updateUser(name, about) {
-  console.log("Save ", name, about)
-  this.$store.commit("setUserName", name)
-  this.$store.commit("setAbout", about)
-}
-
 export default {
   saveUser,
   currentUser,
   logout,
-  refreshState,
-  updateUser
+  refreshState
 }

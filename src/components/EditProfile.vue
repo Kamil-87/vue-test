@@ -6,7 +6,8 @@
             id="name"
             type="text"
             placeholder="Ваше имя"
-            v-bind:value="this.userName"
+            :value="this.userName"
+            @input="editUserName"
         >
       </label>
     </div>
@@ -14,15 +15,14 @@
     <div class="form-group">
       <label for="profileInfo">
         <textarea id="profileInfo" placeholder="О себе"
-                  v-bind:value="this.userAbout"/>
+                  :value="this.userAbout"
+                  @input="editUserAbout"/>
       </label>
     </div>
-    <button class="btn" type="submit" @click="editUser">Сохранить</button>
   </form>
 </template>
 
 <script>
-import userService from "../service/userService";
 
 export default {
   computed:{
@@ -34,8 +34,11 @@ export default {
     }
   },
   methods: {
-    editUser() {
-      userService.updateUser(this.userName, this.userAbout)
+    editUserName(e) {
+      this.$store.commit("setUserName", e.target.value)
+    },
+    editUserAbout(e) {
+      this.$store.commit("setAbout", e.target.value)
     }
   }
 }
