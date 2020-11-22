@@ -48,6 +48,8 @@
 import Popup from "../views/Popup";
 import EditProfile from "../components/EditProfile";
 import AddPost from "../components/AddPost";
+import postService from "../service/postService";
+import userService from "../service/userService";
 
 export default {
   data() {
@@ -67,6 +69,9 @@ export default {
     Popup,
     EditProfile,
     AddPost
+  },
+  beforeCreate() {
+    userService.refreshState()
   },
   methods: {
     EditProfile() {

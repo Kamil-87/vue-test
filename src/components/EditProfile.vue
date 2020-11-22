@@ -6,18 +6,40 @@
             id="name"
             type="text"
             placeholder="Ваше имя"
+            v-bind:value="this.userName"
         >
       </label>
     </div>
 
     <div class="form-group">
       <label for="profileInfo">
-        <textarea id="profileInfo" placeholder="О себе" />
+        <textarea id="profileInfo" placeholder="О себе"
+                  v-bind:value="this.userAbout"/>
       </label>
     </div>
-    <button class="btn" type="submit">Сохранить</button>
+    <button class="btn" type="submit" @click="editUser">Сохранить</button>
   </form>
 </template>
+
+<script>
+import userService from "../service/userService";
+
+export default {
+  computed:{
+    userName() {
+      return this.$store.getters.getUserName
+    },
+    userAbout(){
+      return this.$store.getters.getUserAbout
+    }
+  },
+  methods: {
+    editUser() {
+      userService.updateUser(this.userName, this.userAbout)
+    }
+  }
+}
+</script>
 
 
 <style>

@@ -19,8 +19,35 @@ function logout() {
   localStorage.clear()
 }
 
+function refreshState() {
+  const name = JSON.parse(localStorage.getItem("username"))
+  if (!name) {
+    return
+  }
+  store.commit("setUserName", name)
+  const about = JSON.parse(localStorage.getItem("about"))
+
+  if (!about) {
+    fetch('/data/user-about.json')
+      .then(response => response.json())
+      .then(data => {
+        store.commit("setAbout", data.about)
+      })
+  }else {
+    store.commit("setAbout", about)
+  }
+}
+
+function updateUser(name, about) {
+  console.log("Save ", name, about)
+  this.$store.commit("setUserName", name)
+  this.$store.commit("setAbout", about)
+}
+
 export default {
   saveUser,
   currentUser,
-  logout
+  logout,
+  refreshState,
+  updateUser
 }

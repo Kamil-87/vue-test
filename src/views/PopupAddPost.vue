@@ -27,7 +27,7 @@
             class="modal-body"
             id="modalDescription"
         >
-          <form class="form-box">
+          <form class="form-box" @submit.prevent="addNewPost">
             <div class="form-group">
               <label for="titlePost">
                 <input
@@ -70,6 +70,9 @@ export default {
     close() {
       this.$emit('close');
     },
+    addNewPost() {
+
+    }
   },
 };
 </script>

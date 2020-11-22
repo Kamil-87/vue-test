@@ -21,7 +21,7 @@
         <div class="header__right">
           <input type="text" class="header__search" placeholder="Найти статью">
 
-          <button type="button" class="btn" v-on:click="logout">
+          <button type="button" class="btn" @click.prevent="logout">
             Выйти
           </button>
 
