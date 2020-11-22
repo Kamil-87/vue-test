@@ -1,38 +1,32 @@
 <template>
-  <main>
+  <main class="main">
     <div class="container">
       <div class="main__top">
         <button class="btn">дата</button>
         <button class="btn">алфавит</button>
       </div>
 
-      <div
-          class="card-box"
-          v-for="post in allPosts"
-          :key="post.id"
-          :postData="post"
-      >
-        <article>
-          <router-link
-              class="card"
-              :to="{ name: 'post', params:' id: {{post.id}}'}"
-          >
-            <div class="card__img-left">
-              <img
-                  :src="require('../assets/images/' + post.image)"
-                  :alt="post.title"
-              >
-            </div>
-            <div class="card__content">
-              <h3 class="card__title">{{post.title}}</h3>
-              <p class="card__description">
-                {{ post.description | maxLengthText }}
-              </p>
-              <p class="card__author"><em>{{post.author}}</em></p>
-              <p class="card__date"><small class="text-muted">Creation  date</small></p>
-            </div>
-          </router-link>
-        </article>
+    <div
+        class="card-box"
+        v-for="post in allPosts"
+        :key="post.id"
+        :postData="post"
+    >
+      <article>
+        <router-link class="card" :to="{ name: 'post', params:' id: {post.id}'}">
+          <div class="card__img-left">
+            <img :src=" require('../assets/images/' + post.image) "  alt="">
+          </div>
+          <div class="card__content">
+            <h3 class="card__title">{{post.title}}</h3>
+            <p class="card__description">
+              {{ post.description | maxLengthText }}
+            </p>
+            <p class="card__author"><em>{{post.author}}</em></p>
+            <p class="card__date"><small class="text-muted">Creation  date</small></p>
+          </div>
+        </router-link>
+      </article>
 
       </div>
     </div>

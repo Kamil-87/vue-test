@@ -57,6 +57,10 @@ export default {
       line-height: 75px;
     }
 
+    &__right {
+      display: flex;
+    }
+
     &__link {
       margin-right: 50px;
       padding: 16px;
