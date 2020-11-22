@@ -99,7 +99,7 @@ export default ({
     password: {required, minLength: minLength(8)}
   },
   created() {
-    userService.clearCurrentUser()
+    userService.logout()
   },
 
   methods: {
@@ -110,6 +110,7 @@ export default ({
         return
       }
       const user = {
+        name: this.name,
         email: this.email,
         password: this.password
       }

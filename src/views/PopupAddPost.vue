@@ -27,9 +27,37 @@
             class="modal-body"
             id="modalDescription"
         >
-          <slot name="body">
-            I'm the default body!
-          </slot>
+          <form class="form-box">
+            <div class="form-group">
+              <label for="titlePost">
+                <input
+                    name="titlePost"
+                    id="titlePost"
+                    type="text"
+                    placeholder="Название статьи"
+                >
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label for="descriptionPost">
+                <textarea name="descriptionPost" id="descriptionPost" placeholder="Описание статьи" />
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label for="imagePost">
+                <input
+                    name="imagePost"
+                    id="imagePost"
+                    type="text"
+                    placeholder="Картинку"
+                >
+              </label>
+            </div>
+
+            <button class="btn" type="submit">Добавить</button>
+          </form>
         </section>
       </div>
     </div>
@@ -94,6 +122,37 @@ export default {
   font-weight: bold;
   color: #3897F0;
   background: transparent;
+}
+
+.form-box {
+  padding: 0 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin: 4px;
+  padding: 10px 15px;
+  border: 1px solid rgb(178, 178, 178);
+  border-radius: 3px;
+  box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.6) inset;
+  transition: all 0.2s linear;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  margin: 4px;
+  height: 80px;
+  padding: 10px 15px;
+  border: 1px solid rgb(178, 178, 178);
+  border-radius: 3px;
+  box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.6) inset;
+  transition: all 0.2s linear;
 }
 
 </style>

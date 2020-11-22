@@ -21,7 +21,7 @@
         <div class="header__right">
           <input type="text" class="header__search" placeholder="Найти статью">
 
-          <button type="button" class="btn">
+          <button type="button" class="btn" v-on:click="logout">
             Выйти
           </button>
 
@@ -36,7 +36,11 @@
 <script>
 
 export default {
-
+  methods: {
+    logout() {
+      this.$router.push('/auth')
+    }
+  }
 }
 </script>
 

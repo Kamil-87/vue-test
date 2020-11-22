@@ -4,8 +4,18 @@
       <div class="main__top">
         <button class="btn">дата</button>
         <button class="btn">алфавит</button>
-        <button class="btn" v-on:click="addPost">добавить пост</button>
+        <button
+            class="btn"
+            @click="addPost"
+        >
+          добавить пост
+        </button>
       </div>
+
+      <popup-add-post
+          v-if="showPopup"
+          @close="closePopup"
+      />
 
       <div
           class="card-box"
@@ -38,9 +48,18 @@
 <script>
 import maxLengthText from "../utils/maxLengthText";
 import postService from "../service/postService";
+import PopupAddPost from "../views/PopupAddPost";
 
 export default {
   name: "home",
+  data() {
+    return {
+      showPopup: false
+    }
+  },
+  components: {
+    PopupAddPost
+  },
   filters: {
     maxLengthText
   },
@@ -54,13 +73,17 @@ export default {
   },
   methods: {
     addPost() {
+      this.showPopup = true;
       const newPost = {
-        title: "Новый пост",
-        description: "аватарка пользователя с именем при нажатии на этот блок попадаем на страницу пользователя и поле для поиска статьи по имени.\nНа этой странице выводятся карточки (статьи), в которой находиться дата добавления, фотография, тема статьи, контент не более 25 символов и если контента больше показать “...”, автора статьи (Имя автора).\nПри нажатии на карточку пользователь попадает на страницу статьи.\nПоиск происходит в момент ввода текста, НЕ по нажатию на кнопку найти (ее не должно быть).\nСделать сортировку по дате добавления и алфавиту.\n",
-        image: "post-image.jpg"
+        title: 'titlePost',
+        description: 'descriptionPost',
+        image: 'imagePost'
       }
 
       postService.addPost(newPost)
+    },
+    closePopup() {
+      this.showPopup = false;
     }
   }
 }

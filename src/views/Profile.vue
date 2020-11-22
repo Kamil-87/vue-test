@@ -33,10 +33,10 @@
         </div>
 
         <div class="profile__right">
-          <h2 class="profile__name">Имя</h2>
+          <h2 class="profile__name">{{ userName }}</h2>
           <div class="profile__info">
             <p class="profile__info-title">О себе</p>
-            <p class="profile__info-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi fugiat impedit ipsa nesciunt officiis quasi saepe. Ad, amet commodi consequatur cumque ea et hic in laudantium libero magnam necessitatibus nulla obcaecati quam, quasi, quibusdam quisquam quo saepe sunt? Ab aliquid amet, delectus laudantium molestiae officia porro unde velit veritatis vitae.</p>
+            <p class="profile__info-description">{{ userAbout }}</p>
           </div>
         </div>
       </div>
@@ -53,6 +53,14 @@ export default {
   data() {
     return {
       showPopup: false
+    }
+  },
+  computed:{
+    userName() {
+      return this.$store.getters.getUserName
+    },
+    userAbout(){
+      return this.$store.getters.getUserAbout
     }
   },
   components: {
