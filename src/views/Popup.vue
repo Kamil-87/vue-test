@@ -10,7 +10,9 @@
             class="modal-header"
             id="modalTitle"
         >
-          <slot name="header">
+          <h4>
+            {{ title }}
+          </h4>
             <button
                 type="button"
                 class="btn-close"
@@ -19,7 +21,7 @@
             >
               x
             </button>
-          </slot>
+
         </header>
         <section
             class="modal-body"
@@ -29,19 +31,6 @@
             I'm the default body!
           </slot>
         </section>
-        <footer class="modal-footer">
-          <slot name="footer">
-
-            <button
-                type="button"
-                class="btn-green"
-                @click="close"
-                aria-label="Close modal"
-            >
-              Close me!
-            </button>
-          </slot>
-        </footer>
       </div>
     </div>
   </transition>
@@ -49,7 +38,12 @@
 
 <script>
 export default {
-  name: 'modal',
+  props: {
+    title: {
+      type: String,
+      default: ''
+    }
+  },
   methods: {
     close() {
       this.$emit('close');
@@ -78,23 +72,19 @@ export default {
   display: flex;
   flex-direction: column;
   border-radius: 5px;
+  min-width: 500px;
+  min-height: 200px;
 }
 
-.modal-header,
-.modal-footer {
+.modal-header {
   padding: 15px;
   display: flex;
 }
 
 .modal-header {
   border-bottom: 1px solid #eeeeee;
-  color: #4AAE9B;
+  color: #3897F0;
   justify-content: space-between;
-}
-
-.modal-footer {
-  border-top: 1px solid #eeeeee;
-  justify-content: flex-end;
 }
 
 .modal-body {
@@ -105,17 +95,11 @@ export default {
 .btn-close {
   border: none;
   font-size: 20px;
-  padding: 20px;
+  padding: 2px;
   cursor: pointer;
   font-weight: bold;
-  color: #4AAE9B;
+  color: #3897F0;
   background: transparent;
 }
 
-.btn-green {
-  color: white;
-  background: #4AAE9B;
-  border: 1px solid #4AAE9B;
-  border-radius: 2px;
-}
 </style>

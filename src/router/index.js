@@ -20,10 +20,6 @@ export default new Router({
       component: () => import("@/views/Post"),
     },
     {
-      path: '*/*',
-      redirect: { name: 'home' }
-    },
-    {
       path: "/auth",
       name: "auth",
       meta: {layout: 'empty'},

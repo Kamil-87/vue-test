@@ -65,13 +65,7 @@ export default {
 
 <style lang="scss">
 
-  .main__top {
-    margin-bottom: 15px;
 
-    .btn {
-      margin-right: 15px;
-    }
-  }
   a {
     text-decoration: none;
     color: inherit;
