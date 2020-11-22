@@ -13,7 +13,7 @@
         :postData="post"
     >
       <article>
-        <router-link class="card" :to="{ name: 'post', params:' id: {post.id}'}">
+        <router-link class="card" :to="{ name: 'post', params: { id: post.id }}">
           <div class="card__img-left">
             <img :src=" require('../assets/images/' + post.image) "  alt="">
           </div>
