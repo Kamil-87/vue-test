@@ -1,4 +1,5 @@
 import store from '@/store'
+import idGenerator from "./idGenerator";
 
 function refreshState() {
   const posts = JSON.parse(localStorage.getItem("posts"))
@@ -15,6 +16,7 @@ function refreshState() {
 }
 
 function addPost(post) {
+  post.id = idGenerator.uuidv4()
   store.commit("addPost", post)
 }
 
