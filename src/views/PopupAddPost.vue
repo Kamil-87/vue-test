@@ -7,51 +7,58 @@
            aria-describedby="modalDescription"
       >
         <header
-            class="modal-header"
-            id="modalTitle"
+          class="modal-header"
+          id="modalTitle"
         >
           <h4>
             Добавить статью
           </h4>
-            <button
-                type="button"
-                class="btn-close"
-                @click="close"
-                aria-label="Close modal"
-            >
-              x
-            </button>
+          <button
+            type="button"
+            class="btn-close"
+            @click="close"
+            aria-label="Close modal"
+          >
+            x
+          </button>
 
         </header>
         <section
-            class="modal-body"
-            id="modalDescription"
+          class="modal-body"
+          id="modalDescription"
         >
-          <form class="form-box" @submit.prevent="addNewPost">
+          <form class="form-box" @submit.prevent="submitHandler">
             <div class="form-group">
               <label for="titlePost">
                 <input
-                    name="titlePost"
-                    id="titlePost"
-                    type="text"
-                    placeholder="Название статьи"
+                  name="titlePost"
+                  id="titlePost"
+                  type="text"
+                  placeholder="Название статьи"
+                  v-model="formData.title"
                 >
               </label>
             </div>
 
             <div class="form-group">
               <label for="descriptionPost">
-                <textarea name="descriptionPost" id="descriptionPost" placeholder="Описание статьи" />
+                <textarea
+                  name="descriptionPost"
+                  id="descriptionPost"
+                  placeholder="Описание статьи"
+                  v-model="formData.description"
+                />
               </label>
             </div>
 
             <div class="form-group">
               <label for="imagePost">
                 <input
-                    name="imagePost"
-                    id="imagePost"
-                    type="text"
-                    placeholder="Картинку"
+                  name="imagePost"
+                  id="imagePost"
+                  type="text"
+                  placeholder="Картинку"
+                  v-model="formData.image"
                 >
               </label>
             </div>
@@ -65,13 +72,29 @@
 </template>
 
 <script>
+import idGenerator from "../utils/idGenerator";
+
 export default {
+  data: () => ({
+    formData: {
+      title: '',
+      description: '',
+      image: null,
+    }
+  }),
   methods: {
     close() {
       this.$emit('close');
     },
-    addNewPost() {
-
+    submitHandler() {
+      const newPost = {
+        id: idGenerator.uuidv4(),
+        title: this.formData.title,
+        description: this.formData.description,
+        image: 'post-image.jpg'
+      }
+      console.log('create post')
+      this.$store.dispatch('createPost', newPost)
     }
   },
 };

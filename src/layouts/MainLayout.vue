@@ -1,15 +1,17 @@
 <template>
   <div class="main-content">
-    <main-header />
-    <router-view />
-    <main-footer />
+    <main-header/>
+    <main class="main">
+      <router-view/>
+    </main>
+    <main-footer/>
   </div>
 </template>
 
 <script>
 import MainHeader from "../components/MainHeader";
 import MainFooter from "../components/MainFooter";
-import userService from "../service/userService";
+
 export default {
   name: "main-layout",
   components: {
@@ -21,19 +23,20 @@ export default {
   },
   methods: {
     checkUserAuthentication() {
-      if (!userService.currentUser()) {
-        this.$router.push('/auth')
-      }
+      console.log('authentication')
+      // if (!userService.currentUser()) {
+      //   this.$router.push('/auth')
+      // }
     }
   }
 };
 </script>
 
 <style lang="scss">
-  .main-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
+.main-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
 </style>

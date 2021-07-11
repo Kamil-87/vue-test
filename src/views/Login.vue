@@ -1,22 +1,19 @@
 <template>
   <div>
     <form
-        class="auth-card"
-        @submit.prevent="authorize"
-        action="/"
-        method="post"
+      class="auth-card"
+      method="post"
+      @submit.prevent="submitHandler"
     >
       <div class="form-group">
         <label for="name">Ваше имя:</label>
         <input
-            id="name"
-            type="text"
-            v-model="name"
-            :class="{invalid: ($v.name.$dirty && !$v.name.required) || ($v.name.$dirty && !$v.name.minLength) || ($v.name.$dirty && !$v.name.maxLength)}"
+          id="name"
+          type="text"
+          v-model="name"
         >
         <small
-            class="helper-text invalid"
-            v-if="$v.name.$dirty && !$v.name.required"
+          class="helper-text invalid"
         >
           Поле не должно быть пустым
         </small>
@@ -25,46 +22,25 @@
       <div class="form-group">
         <label for="mail">Email:</label>
         <input
-            class="invalid"
-            id="mail"
-            type="email"
-            v-model.trim="email"
-            :class="{invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email)}"
+          class="invalid"
+          id="mail"
+          type="email"
+          v-model.trim="email"
         >
         <small
-            class="helper-text invalid"
-            v-if="$v.email.$dirty && !$v.email.required"
+          class="helper-text invalid"
         >
           Поле не должно быть пустым
-        </small>
-        <small
-            class="helper-text invalid"
-            v-else-if="$v.email.$dirty && !$v.email.email"
-        >
-          Введите корректный Email
         </small>
       </div>
 
       <div class="form-group">
         <label for="passwordConfirm">Пароль:</label>
         <input
-            type="password"
-            id="passwordConfirm"
-            v-model.trim="password"
-            :class="{invalid: ($v.password.$dirty && !$v.password.required) || ($v.password.$dirty && !$v.password.minLength)}"
+          type="password"
+          id="passwordConfirm"
+          v-model.trim="password"
         >
-        <small
-            class="helper-text invalid"
-            v-if="$v.password.$dirty && !$v.password.required"
-        >
-          Введите пароль
-        </small>
-        <small
-            class="helper-text invalid"
-            v-else-if="$v.password.$dirty && !$v.password.minLength"
-        >
-          Пароль не может быть меньше {{$v.password.$params.minLength.min}}
-        </small>
       </div>
 
       <div class="form-group">
@@ -79,10 +55,9 @@
 </template>
 
 <script>
-import {email, required, minLength, maxLength} from 'vuelidate/lib/validators'
-import userService from "../service/userService";
 
-export default ({
+
+export default {
   name: 'login',
   data: () => ({
     name: '',
@@ -91,42 +66,26 @@ export default ({
     img: ''
   }),
 
- // Пароль: Не менее 8-ми символов, латиница, должны присутствовать цифры, первый символ в верхнем регистре.
+  // Пароль: Не менее 8-ми символов, латиница, должны присутствовать цифры, первый символ в верхнем регистре.
 
-  validations: {
-    name: {required, minLength: minLength(3), maxLength: maxLength(15)},
-    email: {email, required},
-    password: {required, minLength: minLength(8)}
-  },
   created() {
-    userService.logout()
+    // userService.logout()
   },
 
   methods: {
-    authorize() {
-      if (this.$v.$invalid) {
-        console.log($v.password)
-        this.$v.$touch()
-        return
-      }
-      const user = {
-        name: this.name,
-        email: this.email,
-        password: this.password
-      }
-
-      userService.saveUser(user)
+    submitHandler() {
+      console.log('submit')
       this.$router.push('/')
     }
   }
-})
+}
 </script>
 
 
 <style>
 
-.auth-card{
-  width:500px;
+.auth-card {
+  width: 500px;
   background: #fff;
   padding: 25px;
   border-radius: 5px

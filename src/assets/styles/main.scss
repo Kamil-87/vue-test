@@ -1,4 +1,4 @@
-@import "variable";
+@import "variables";
 
 html, body {
   height: 100%;
@@ -21,7 +21,8 @@ main {
   flex: 1 0 auto;
   padding-top: 25px;
 }
-footer{
+
+footer {
   flex: 0 0 auto;
 }
 
@@ -37,16 +38,56 @@ a {
 }
 
 .btn {
-  padding: 8px 16px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  background-color: rgb(56,151,240);
-  color: #ffffff;
+  color: $main-color2;
+  position: relative;
+  place-content: center;
+  place-items: center;
+  width: fit-content;
+  border-radius: 99px;
+  letter-spacing: 0.05em;
+  border: 1px solid $main-color2;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-right: 10px;
+  padding: 0.5rem 1.5rem;
+  white-space: nowrap;
+  font-weight: 700;
+  outline: none;
+  background: #fff;
+  transition: all 0.22s;
   
   &:hover {
-    background-color: rgba(56,151,240, .9);
-    outline: none;
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 1 !important;
+    background: #eee !important;
+    border-color: #ddd !important;
+    color: #999 !important;
+  }
+  
+  &:active {
+    box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.3);
+  }
+  
+  .primary {
+    background: $main-color2;
+    color: #fff;
+  }
+  
+  .danger {
+    background: #e53935;
+    color: #fff;
+    border-color: #e53935;
+  }
+  
+  .warning {
+    background: #c25205;
+    color: #fff;
+    border-color: #c25205;
   }
 }
 
@@ -56,4 +97,25 @@ a {
   .btn {
     margin-right: 15px;
   }
+}
+
+input, textarea {
+  margin: 0;
+  outline: none;
+  border: 2px solid #ccc;
+  display: block;
+  width: 100%;
+  color: #2c3e50;
+  padding: 0.5rem 1.5rem;
+  border-radius: 3px;
+  font-size: 1rem;
+  resize: none;
+}
+
+input:active,
+input:focus,
+textarea:active,
+textarea:focus{
+  transition: border 0.22s;
+  border: 2px solid #42b983;
 }

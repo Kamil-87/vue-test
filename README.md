@@ -1,4 +1,4 @@
-# vue-cli-todos
+# vue
 
 ## Project setup
 ```

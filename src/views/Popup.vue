@@ -1,32 +1,19 @@
 <template>
-  <transition name="fade popup-fade">
-    <div class="modal-backdrop" ref="popup-wrapper">
-      <div class="modal"
-           role="dialog"
-           aria-labelledby="modalTitle"
-           aria-describedby="modalDescription"
-      >
-        <header
-            class="modal-header"
-            id="modalTitle"
-        >
-          <h4>
-            {{ popupTitle }}
-          </h4>
-            <button
-                type="button"
-                class="btn-close"
-                @click="close"
-                aria-label="Close modal"
-            >
-              x
-            </button>
-
+  <transition name="modal-fade">
+    <div class="modal-backdrop" role="dialog">
+      <div class="modal" ref="modal">
+        <header class="modal-header">
+          <slot name="header">
+            <h2>
+              This is the default tile!
+            </h2>
+          </slot>
+          <button type="button" class="btn-close btn-right modal-close" @click="close" aria-label="Close modal">
+            x
+          </button>
         </header>
-        <section
-            class="modal-body"
-            id="modalDescription"
-        >
+
+        <section class="modal-body">
           <slot name="body">
             I'm the default body!
           </slot>
@@ -38,16 +25,6 @@
 
 <script>
 export default {
-  props: {
-    popupTitle: {
-      type: String,
-      default: ''
-    },
-    namePopup: {
-      type: String,
-      default: ''
-    }
-  },
   methods: {
     close() {
       this.$emit('close');
@@ -56,7 +33,17 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.modal-close {
+  border: none;
+  font-size: 20px;
+  padding: 2px;
+  cursor: pointer;
+  font-weight: bold;
+  color: $main-color2;
+  background: transparent;
+}
+
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -70,25 +57,24 @@ export default {
 }
 
 .modal {
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 2px 2px 20px 1px;
   overflow-x: auto;
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
-  min-width: 500px;
-  min-height: 200px;
+  border-radius: 10px;
+  min-width: 200px;
+  max-width: 500px;
+  width: 100%;
 }
 
 .modal-header {
   padding: 15px;
   display: flex;
-}
-
-.modal-header {
-  border-bottom: 1px solid #eeeeee;
-  color: #3897F0;
   justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eeeeee;
+  color: $main-color2;
 }
 
 .modal-body {
@@ -96,14 +82,15 @@ export default {
   padding: 20px 10px;
 }
 
-.btn-close {
-  border: none;
-  font-size: 20px;
-  padding: 2px;
-  cursor: pointer;
-  font-weight: bold;
-  color: #3897F0;
-  background: transparent;
+.modal-fade-enter,
+.modal-fade-leave-active {
+  opacity: 0;
 }
+
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
 
 </style>

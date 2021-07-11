@@ -5,7 +5,7 @@
 </template>
 
 
-<style>
+<style scoped>
 .empty-layout {
   display: flex;
   flex-direction: column;

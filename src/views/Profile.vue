@@ -22,6 +22,7 @@
         @close="closePopup"
         popupTitle="Редактировать профиль"
       >
+        <h3 slot="header">Редактировать профиль</h3>
         <template v-slot:body>
           <edit-profile />
         </template>
@@ -47,9 +48,6 @@
 <script>
 import Popup from "../views/Popup";
 import EditProfile from "../components/EditProfile";
-import AddPost from "../components/AddPost";
-import postService from "../service/postService";
-import userService from "../service/userService";
 
 export default {
   data() {
@@ -68,10 +66,9 @@ export default {
   components: {
     Popup,
     EditProfile,
-    AddPost
   },
   beforeCreate() {
-    userService.refreshState()
+    // userService.refreshState()
   },
   methods: {
     EditProfile() {
