@@ -5,47 +5,38 @@
       method="post"
       @submit.prevent="submitHandler"
     >
-      <div class="form-group">
+      <div class="form-control" :class="{invalid: errors.name}">
         <label for="name">Ваше имя:</label>
         <input
           id="name"
           type="text"
-          v-model="name"
+          v-model="formData.name"
         >
-        <small
-          class="helper-text invalid"
-        >
-          Поле не должно быть пустым
-        </small>
+        <small v-if="errors.name">{{ errors.name }}</small>
       </div>
 
-      <div class="form-group">
+      <div class="form-control" :class="{invalid: errors.email}">
         <label for="mail">Email:</label>
         <input
-          class="invalid"
           id="mail"
           type="email"
-          v-model.trim="email"
+          v-model.trim="formData.email"
         >
-        <small
-          class="helper-text invalid"
-        >
-          Поле не должно быть пустым
-        </small>
+        <small v-if="errors.name">{{ errors.email }}</small>
       </div>
 
-      <div class="form-group">
+      <div class="form-control">
         <label for="passwordConfirm">Пароль:</label>
         <input
           type="password"
           id="passwordConfirm"
-          v-model.trim="password"
+          v-model.trim="formData.password"
         >
       </div>
 
-      <div class="form-group">
+      <div class="form-control">
         <label for="userAvatar">Выберите фотографию: </label>
-        <input type="text" id="userAvatar">
+        <input type="file" id="userAvatar">
       </div>
 
       <button class="auth-btn" type="submit">Войти</button>
@@ -60,10 +51,17 @@
 export default {
   name: 'login',
   data: () => ({
-    name: '',
-    email: '',
-    password: '',
-    img: ''
+    formData: {
+      name: '',
+      email: '',
+      password: '',
+      img: null,
+    },
+    errors: {
+      name: null,
+      email: null,
+      password: null,
+    }
   }),
 
   // Пароль: Не менее 8-ми символов, латиница, должны присутствовать цифры, первый символ в верхнем регистре.
@@ -73,9 +71,37 @@ export default {
   },
 
   methods: {
+    formIsValid() {
+      let isValid = true
+      if (this.formData.name.length === 0) {
+        this.errors.name = 'Поле не может быть пустым'
+        isValid = false
+      } else {
+        this.errors.name = null
+      }
+
+      if (this.formData.email.length === 0) {
+        this.errors.email = 'Поле не может быть пустым'
+        isValid = false
+      } else {
+        this.errors.email = null
+      }
+
+      if (this.formData.password.length === 0) {
+        this.errors.password = 'Поле не может быть пустым'
+        isValid = false
+      } else {
+        this.errors.password = null
+      }
+
+      return isValid
+    },
     submitHandler() {
-      console.log('submit')
-      this.$router.push('/')
+      if(this.formIsValid()) {
+        console.log('formData', this.formData)
+        this.$router.push('/')
+      }
+
     }
   }
 }
@@ -83,28 +109,12 @@ export default {
 
 
 <style>
-
 .auth-card {
   width: 500px;
   background: #fff;
   padding: 25px;
   border-radius: 5px
 }
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-input {
-  width: 92%;
-  margin-top: 4px;
-  padding: 10px 15px;
-  border: 1px solid rgb(178, 178, 178);
-  border-radius: 3px;
-  box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.6) inset;
-  transition: all 0.2s linear;
-}
-
 
 .auth-btn {
   width: 30%;
@@ -122,7 +132,4 @@ input {
   outline: none;
 }
 
-.invalid {
-  border: 1px solid red;
-}
 </style>
