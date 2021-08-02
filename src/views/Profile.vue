@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import Popup from "../views/Popup";
-import EditProfile from "../components/EditProfile";
+import Popup from "../views/Popup"
+import EditProfile from "../components/EditProfile"
 
 export default {
   data() {
@@ -72,10 +72,10 @@ export default {
   },
   methods: {
     EditProfile() {
-      this.showPopup = true;
+      this.showPopup = true
     },
     closePopup() {
-      this.showPopup = false;
+      this.showPopup = false
     }
   }
 }

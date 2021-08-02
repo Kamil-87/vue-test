@@ -26,7 +26,6 @@
       class="card-box"
       v-for="post in allPosts"
       :key="post.id"
-      :postData="post"
     >
       <article>
         <router-link class="card" :to="{ name: 'post', params: { id: post.id }}">
@@ -50,7 +49,7 @@
 </template>
 
 <script>
-import maxLengthText from "../utils/maxLengthText";
+import maxLengthText from "../filters/maxLengthText";
 import PopupAddPost from "../views/PopupAddPost";
 
 export default {
