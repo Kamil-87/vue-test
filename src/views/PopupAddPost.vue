@@ -72,7 +72,9 @@
 </template>
 
 <script>
-import idGenerator from "../utils/idGenerator";
+import idGenerator from "../utils/idGenerator"
+
+const date = new Intl.DateTimeFormat('ru-Ru', {'year': 'numeric', 'month': 'numeric', 'day': 'numeric'}).format(new Date())
 
 export default {
   data: () => ({
@@ -84,16 +86,17 @@ export default {
   }),
   methods: {
     close() {
-      this.$emit('close');
+      this.$emit('close')
     },
     submitHandler() {
       const newPost = {
         id: idGenerator.uuidv4(),
         title: this.formData.title,
         description: this.formData.description,
-        image: 'post-image.jpg'
+        image: 'post-image.jpg',
+        date: date
       }
-      console.log('create post')
+      console.log('create post', date)
       this.$store.dispatch('createPost', newPost)
     }
   },
