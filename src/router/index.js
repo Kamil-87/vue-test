@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'production') {
   mode = 'hash'
 }
 
-const router = new VueRouter({
+const router = new Router({
   mode: mode,
   base: process.env.BASE_URL,
   routes
