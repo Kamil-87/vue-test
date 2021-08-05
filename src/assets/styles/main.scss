@@ -1,13 +1,8 @@
+@import "normalize";
 @import "variables";
 
 html, body {
   height: 100%;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 body {
@@ -55,12 +50,12 @@ a {
   outline: none;
   background: #fff;
   transition: all 0.22s;
-  
+
   &:hover {
     cursor: pointer;
     opacity: 0.8;
   }
-  
+
   &:disabled {
     cursor: not-allowed;
     opacity: 1 !important;
@@ -68,22 +63,22 @@ a {
     border-color: #ddd !important;
     color: #999 !important;
   }
-  
+
   &:active {
     box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.3);
   }
-  
+
   .primary {
     background: $main-color2;
     color: #fff;
   }
-  
+
   .danger {
     background: #e53935;
     color: #fff;
     border-color: #e53935;
   }
-  
+
   .warning {
     background: #c25205;
     color: #fff;
@@ -93,7 +88,7 @@ a {
 
 .main__top {
   margin-bottom: 15px;
-  
+
   .btn {
     margin-right: 15px;
   }

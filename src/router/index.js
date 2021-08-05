@@ -28,6 +28,12 @@ const routes = [
     meta: {layout: 'main'},
     component: () => import("@/views/Profile")
   },
+  {
+    path: "/about",
+    name: "About",
+    meta: {layout: 'main'},
+    component: () => import("@/views/About")
+  },
 ]
 
 let mode = 'history'
